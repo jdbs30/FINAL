@@ -31,3 +31,11 @@ npm start
 - `public/resume/`: downloadable resume.
 
 Deploy as a Next.js application on a compatible host, including Netlify or Vercel. The root HTML file is no longer the application entry point.
+
+## Netlify deployment
+
+Connect this Git repository to Netlify and deploy from the repository root. The included `netlify.toml` sets the build command to `npm run build`, the publish directory to `.next`, and Node.js to version 22. Netlify automatically applies its Next.js adapter.
+
+For an existing Netlify site previously serving the HTML portfolio, redeploy after pushing the Next.js files and `netlify.toml`. Keep the base directory empty (repository root). Do not use `public` or the repository root as the publish directory.
+
+Uploading this source folder or `.next` through Netlify's drag-and-drop deploy does not run the Next.js build or adapter. Use the Git integration for this configuration; manual static uploads require a separate static-export configuration and the generated `out` folder.
