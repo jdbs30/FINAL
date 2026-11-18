@@ -30,12 +30,12 @@ npm start
 - `public/img/`: portfolio imagery.
 - `public/resume/`: downloadable resume.
 
-This Next.js application builds as a static export in `out/`. Its interactive React components work without a server. `npm start` previews that exported folder locally.
+Deploy as a Next.js application on a compatible host, including Netlify or Vercel. The root HTML file is no longer the application entry point.
 
 ## Netlify deployment
 
-Connect this Git repository to Netlify and deploy from the repository root. The included `netlify.toml` sets the build command to `npm run build`, the publish directory to `out`, and Node.js to version 22. The Next.js server adapter is skipped because this portfolio is fully static.
+Connect this Git repository to Netlify and deploy from the repository root. The included `netlify.toml` sets the build command to `npm run build`, the publish directory to `.next`, and Node.js to version 22. Netlify automatically applies its Next.js adapter.
 
-For an existing Netlify site, push these changes and trigger a new deploy. Keep the base directory empty (repository root). Publish `out`, not `.next`, `public`, or the source repository root. The build produces `out/index.html`, JavaScript, CSS, images, and the downloadable resume.
+For an existing Netlify site previously serving the HTML portfolio, redeploy after pushing the Next.js files and `netlify.toml`. Keep the base directory empty (repository root). Do not use `public` or the repository root as the publish directory.
 
-For manual drag-and-drop deployment, run `npm run build` locally, then upload the generated `out` folder. Its `index.html` must be at the root of the uploaded folder. Do not upload the source folder or `.next`. Netlify does not run a build for manual uploads.
+Uploading this source folder or `.next` through Netlify's drag-and-drop deploy does not run the Next.js build or adapter. Use the Git integration for this configuration; manual static uploads require a separate static-export configuration and the generated `out` folder.
